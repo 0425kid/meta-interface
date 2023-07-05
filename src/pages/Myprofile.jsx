@@ -474,7 +474,7 @@ export default function Profile() {
     marginTop:"6px",
     display: "flex",
     flexWrap: "wrap",
-    gap: "7px",
+    gap: "10px",
   };
 
   const toolss = {
@@ -590,17 +590,14 @@ export default function Profile() {
                   <p className={styles.interestpart}>관심분야</p>
                   <span style={contain}>
                     
-                    {/* 직무 추가 api - 504 에러에 대비 */}
-                    <span style={indata}>개발</span>
-                    <span style={indata}>디자인</span>
-                    <span style={indata}>모델링</span>
-                    <span style={indata}>기획</span>
-                    <span style={indata}>기타</span>
-
-                    {/* {field &&
+                    {/* 직무 추가 api - 504 에러에 대비
+                    <span style={indata}>서버 개발자</span>
+                    <span style={indata}>UI 디자이너</span>
+                    <span style={indata}프론트 개발자</span> */}
+                    {field &&
                       field.map((item) => {
                         return <span style={indata}>{item.title}</span>;
-                      })} */}
+                      })}
                     {/* <span style={indata}>{item.interest}</span>
                     <span style={indata}>{item.interest}</span>
                     <span style={indata}>{item.interest}</span> */}

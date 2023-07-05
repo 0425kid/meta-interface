@@ -57,13 +57,11 @@ export default function CreateProject() {
     setSelectedOption1(event.target.value);
 
     const selectedIndex = event.target.value; // 선택한 옵션의 index 값
+    console.log(selectedIndex);
     setSelectedIndex1(selectedIndex);
     let num = parseInt(selectedIndex); // 정수로 변환
-    postData(num);
 
     dbJob(num);
-    console.log("니가 선택한 인덱스다"+selectedIndex);
-
   };
 
   const handleOption2Change = (event) => {
@@ -76,7 +74,6 @@ export default function CreateProject() {
     console.log("너는 무슨 형이니"+ typeof(num));
 
     setSelectedIndex2(selectedIndex);
-    postData(num);
 
     dbJob(num);
   };
@@ -89,10 +86,8 @@ export default function CreateProject() {
     setSelectedIndex3(selectedIndex);
 
     let num = parseInt(selectedIndex); // 정수로 변환
-    postData(num);
 
     dbJob(num);
-
     // dbJob();
     // console.log()
     //직무 이름에 해당하는 직무 id 가져오기 , 직무 db 저장하는 함수 호출하면서 직무 id넘겨주기
@@ -250,64 +245,9 @@ export default function CreateProject() {
       console.log(error);
     });
   }
-  useEffect(() => {
-    fetchDataa();
-  }, []);
-
-  const fetchDataa = () =>{
-
-  }
-
-  const postData = async () => {
-    try {
-      const response = await axios.post(requestURL+'userinfo/interested/put', {
-        "name": userLoginString,
-        "field_index": 1
-      }, {
-        headers: {
-          "Content-Type": `application/json;charset=UTF-8`,
-          "Accept": "application/json",
-
-          'Content-Type': 'application/json',
-          "Access-Control-Allow-Origin": `http://localhost:3000`,
-          'Access-Control-Allow-Credentials':"true",
-        }
-      });
-  
-      // 성공적으로 응답 받은 경우 처리할 코드
-      console.log(response.data);
-    } catch (error) {
-      // 요청 실패 또는 응답 처리 중 오류가 발생한 경우 처리할 코드
-      console.error(error);
-    }
-  };
-
-
-//   const xhr = new XMLHttpRequest();
-//   const url = requestURL+'userinfo/interested/put'; // 요청을 보낼 엔드포인트 URL
-
-// xhr.open('POST', url, true);
-// xhr.setRequestHeader('Content-Type', 'text/plain'); // Content-Type 설정
-// xhr.setRequestHeader('Origin', window.location.origin); // Origin 헤더 추가
-
-// xhr.onreadystatechange = function() {
-//   if (xhr.readyState === XMLHttpRequest.DONE) {
-//     if (xhr.status === 200) {
-//       // 요청 성공 시 처리할 코드
-//       console.log(xhr.responseText);
-//     } else {
-//       // 요청 실패 시 처리할 코드
-//       console.error('요청 실패:', xhr.status);
-//     }
-//   }
-// };
-
-// const requestBody = JSON.stringify({
-//   "name": "rnjsxogns3333@naver.com",
-//   "field_index": 2
-// });
-
-// xhr.send(requestBody);
+  // useEffect(() => {
+  //   dbJob();
+  // }, []);
 
   //경력 저장
   const dbCareer = (career) => {
@@ -479,7 +419,7 @@ export default function CreateProject() {
           </div>
         </div>
         <div className={styles2.basic}>
-          <span className={styles2.middleFont}>자기소개 (본인의 직무, 관심분야 등 프로젝트와 관련된 이야기를 적어주세요!)</span>
+          <span className={styles2.middleFont}>자기소개</span>
           <div className={styles2.n}></div>
           <textarea style={option2} value={text} onChange={handleTextChange} />
           
